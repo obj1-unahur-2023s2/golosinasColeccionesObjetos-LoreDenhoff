@@ -1,6 +1,69 @@
+import golosinas.*
+import gustos.*
 
-test "testX" {
+test "Cuando se da el primer mordisco al bombon pierde 20% + 1 gramo de peso" {
+	bombon.mordisco()
+		assert.equals(11,bombon.peso())
+}
+test "Cuando se da el primer mordisco al alfajor pierde 20% de peso" {
+	alfajor.mordisco()
+		assert.equals(240,alfajor.peso())
+}
+test "Cuando se da el primer mordisco al caramelo pierde 1gr de peso" {
+	caramelo.mordisco()
+		assert.equals(4,caramelo.peso())
+}
+test "Cuando se da el primer mordisco al chupetin pierde 10% de peso" {
+	chupetin.mordisco()
+		assert.equals(6.3,chupetin.peso())
+}
+test "Cuando la oblea pesa menos de 70gr pierde 25%" {
+	oblea.mordisco()
+	oblea.mordisco()
+	oblea.mordisco()
+		assert.equals(46.875,oblea.peso())
+}
+test "Cuando la oblea pesa mas de 70gr pierde 50%" {
+	oblea.mordisco()
+		assert.equals(125,oblea.peso())
+}
+test "Se le asigna un precio al chocolatin" {
+	chocolatin.pesoInicial(100)
+	assert.equals(50,chocolatin.precio())
+}
+test "El chocolatin pierde 2 gramos por mordida" {
+	chocolatin.pesoInicial(10)
+	chocolatin.mordisco()
+	chocolatin.mordisco()
+	chocolatin.mordisco()
+	assert.equals(4,chocolatin.peso())
+}
 
-	assert.that(true)
+test "Comprobar el peso del chocolatin despes de una mordida" {
+	chocolatin.pesoInicial(10)
+	chocolatin.mordisco()
+	assert.equals(5,chocolatin.precio())
+}
 
+test "Devueve el peso de la golosina de base" {
+	golosinaBaniada.golosinaDeBase(chupetin)
+	assert.equals(11,golosinaBaniada.peso()) 
+}
+
+test "Devueve el precio de la golosina de base" {
+	golosinaBaniada.golosinaDeBase(alfajor)
+	assert.equals(14,golosinaBaniada.precio()) 
+}
+
+test "Mordisco" {
+	golosinaBaniada.golosinaDeBase(caramelo)
+	golosinaBaniada.mordisco()
+	assert.equals(6,golosinaBaniada.peso()) 
+}
+
+test "tutifruti"{
+	pastillaTuttiFrutti.mordida()
+	pastillaTuttiFrutti.mordida()
+	pastillaTuttiFrutti.mordida()
+	assert.equals(frutilla,pastillaTuttiFrutti.sabor())
 }
