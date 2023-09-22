@@ -6,7 +6,7 @@ object bombon {
 	method peso() = 0.max(peso)
 	method precio() = 5
 	method sabor() = frutilla
-	method libreDeGluten () = true
+	method libreDeGluten() = true
 	method mordisco() {	peso = (peso*0.8) - 1} // peso * 0.8 es el porcentaje del peso que queda después de perder el 20%
 		                                      //peso=peso*08 es lo mismo que peso *=0.8	
 }
