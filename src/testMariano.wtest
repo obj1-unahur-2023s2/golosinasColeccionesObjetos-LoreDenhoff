@@ -119,7 +119,14 @@ test "Precio de las golosinas de un sabor"{
 	mariano.comprar(bombon)
 	assert.equals(6,mariano.gastoEn(frutilla))
 }
-
+ 
+ test "sabor"{
+	mariano.comprar(alfajor)
+	mariano.comprar(caramelo)
+	mariano.comprar(bombon)
+	assert.equals(frutilla,mariano.masPopular())
+}
+ 
 
 
 

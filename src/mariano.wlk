@@ -13,15 +13,13 @@ object mariano {
 	method hayGolosinaSinTACC()=compradas.any({golosina => golosina.libreDeGluten()})
 	method preciosCuidados()=compradas.all({golosina => golosina.precio()<= 10})
 	method golosinaDeSabor(unSabor)=compradas.find({golosina=> golosina.sabor()==unSabor})
-	method golosinasDeSabor(unSabor)=compradas.filter({golosina=> golosina.sabor()==unSabor})
-	method sabores()= compradas.map({golosina => golosina.sabor()}).asSet()
+	method golosinasDeSabor(unSabor)=compradas.filter({golosina=> golosina.sabor()==unSabor})//devuelve las golosinas del sabor
+	method sabores()= compradas.map({golosina => golosina.sabor()}).asSet() //ME DEVUELVE LOS SABORES DE LA BOLSA
 	method golosinaMasCara() = compradas.max({golosinas => golosinas.precio()})
 	method pesoGolosinas() = compradas.sum({golosinas => golosinas.peso()})
 	method golosinasFaltantes(golosinasDeseadas) = golosinasDeseadas.asSet().difference(compradas.asSet())
 	method gustosFaltantes(gustosDeseados) = gustosDeseados.asSet().difference(self.sabores())
 	method gastoEn(sabor) = self.golosinasDeSabor(sabor).sum({golosina => golosina.precio()})
 	method cantDeGolosinas(sabor) = self.golosinasDeSabor(sabor).size()
-	method saborMasPopular() = self.sabores().max({golosina => golosina.cantDeGolosina()})
-	method saborMasPesado() {} 
-	
+	//method masPopular() =  compradas.max(self.sabores().asList().cantDeGolosina({s=> return(s)}))
 }
