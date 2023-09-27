@@ -3,7 +3,7 @@ import gustos.*
 
 object mariano {
 	
-	var compradas =[]
+	var compradas =[bombon, alfajor, caramelo]
 		
 	method comprar(unaGolosina){compradas.add(unaGolosina)} 
 	method desechar(unaGolosina){compradas.remove(unaGolosina)}
@@ -21,5 +21,11 @@ object mariano {
 	method gustosFaltantes(gustosDeseados) = gustosDeseados.asSet().difference(self.sabores())
 	method gastoEn(sabor) = self.golosinasDeSabor(sabor).sum({golosina => golosina.precio()})
 	method cantDeGolosinas(sabor) = self.golosinasDeSabor(sabor).size()
-	//method masPopular() =  compradas.max(self.sabores().asList().cantDeGolosina({s=> return(s)}))
+	method masPopular() {
+		var saboresGolosinas = (self.sabores()).asList()
+
+		return (self.cantDeGolosinas(saboresGolosinas.forEach({g => g})))
+	}
+
+
 }
