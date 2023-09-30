@@ -22,15 +22,17 @@ object mariano {
 	method gustosFaltantes(gustosDeseados) = gustosDeseados.asSet().difference(self.sabores())
 	method gastoEn(sabor) = self.golosinasDeSabor(sabor).sum({golosina => golosina.precio()})
 	method cantDeGolosinas(sabor) = self.golosinasDeSabor(sabor).size()
-	method losSabores() =(self.sabores()).asList()  //igual a la variable de mas Popular lo puse para probar que funciona
+	method losSabores() =(self.sabores()).asList()  
 	method masPopular() {
-		var losSabores = (self.sabores()).asList()
-		 (0..losSabores.size()-2).forEach({i => return if(self.cantDeGolosinas(losSabores.get(i))>=self.cantDeGolosinas(losSabores.get(i+1))) losSabores.get(i) else losSabores.get(i+1)})
-			}
+		var resultado
+		 (0..self.losSabores().size()-2).forEach({i => return if(self.cantDeGolosinas(self.losSabores().get(i))>=self.cantDeGolosinas(self.losSabores().get(i+1))) resultado= self.losSabores().get(i) else resultado= self.losSabores().get(i+1)})
+			return resultado
+	}
 	method peso(sabor) = self.golosinasDeSabor(sabor).sum({g => g.peso()})
 	method saborMasPesado(){
-		var losSabores = (self.sabores()).asList()
-			return	 (0..losSabores.size()-2).forEach({i => if(self.peso(losSabores.get(i))>self.peso(losSabores.get(i+1)))  losSabores.get(i) else losSabores.get(i+1)})
+		var resultado
+			(0..self.losSabores().size()-2).forEach({i => if(self.peso(self.losSabores().get(i))>self.peso(self.losSabores().get(i+1))) resultado= self.losSabores().get(i) else resultado= self.losSabores().get(i+1)})
+				return resultado
 		}
 
 
